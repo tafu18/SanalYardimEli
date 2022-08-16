@@ -37,7 +37,7 @@
                                 	<h2>Hızlı Erişim</h2>
 									<div class="widget-content">
 										<ul class="list">
-                                        	<li><a href="index">Anasayfa</a></li>
+                                        	<li><a href="/">Anasayfa</a></li>
                                             <li><a href="donations">Bağışlar</a></li>
                                             <li><a href="demands">Talepler</a></li>
                                             <li><a href="gallery">Gerçekleşen Bağışlar</a></li>

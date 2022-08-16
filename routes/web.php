@@ -4,6 +4,7 @@ use App\Http\Controllers\DemandsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationsController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -39,12 +40,16 @@ Route::get('/demand_details', [DemandsController::class, 'getDemandDetails']);
 
 Route::get('/donation_details', [DonationsController::class, 'getDonationDetails']);
 
+Route::get('/login', function () { return view('login');});
+
+Route::post('/login', [AdminController::class, 'adminLogin'])->name('login');
+
+Route::get('/admin', [AdminController::class, 'getAllData']);
+
+Route::get('/last_donation', [AdminController::class, 'getAllDataLastDonation']);
+
 Route::get('/slider', function () {
     return view('slider');
-});
-
-Route::get('/admin', function(){
-    return view('admin');
 });
 
 Route::get('/control', function(){
@@ -56,8 +61,10 @@ Route::get('/gallery', function(){
     return view('gallery');
 });
 
-Route::get('/last_donation', function(){
-    return view('last_donation');
+
+
+Route::get('/welcome', function(){
+    return view('welcome');
 });
 
 
