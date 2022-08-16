@@ -70,13 +70,13 @@
                 <div class="nav justify-content-center-2 tabs color-theme">
                     <ul class="nav nav-pills mb-3 mt-3 justify-content-center-2" id="pills-tab" role="tablist">
                         <li class="nav-item pad" role="presentation">
-                            <button class="nav-link wdth btn-spec" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
+                            <button title="Yardım Etmek İstiyorum" class="nav-link wdth btn-spec" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">
                                 <img src="images/worker.svg" alt="" width = "70" height = "80"><br>
                                 Yardım Etmek İstiyorum
                             </button>
                         </li>
                         <li class="nav-item pad" role="presentation">
-                            <button class="nav-link wdth btn-spec" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
+                            <button title="Yardım Talep Etmek İstiyorum" class="nav-link wdth btn-spec" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">
                                 <img src="images/employer.svg" alt="" width = "70" height = "80"><br>
                                 Yardım Talep Etmek İstiyorum
                             </button>

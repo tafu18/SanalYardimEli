@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('donation_and_demand_control', function (Blueprint $table) {
             $table->id();
-            $table->string('donation_di', 25);
+            $table->string('donation_id', 25);
             $table->string('demand_id', 25);
             $table->text('img_src');
             $table->timestamps();

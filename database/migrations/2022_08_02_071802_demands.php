@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone', 25);
             $table->text('address');
             $table->string('gender', 5);
-            $table->integer('size');
+            $table->string('size', 5);
             $table->integer('shoes_size');
             $table->text('another');
             $table->integer('status');

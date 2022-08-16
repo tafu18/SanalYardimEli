@@ -28,4 +28,29 @@ class DonationsController extends Controller
         return view('index', array('donations' => $toplam, 'donationsType' => $donationsType));
     }
 
+    public function getDonations(){
+        $donationsToplam = DB::select("SELECT count(*) AS Counter FROM `donations`");
+        $donations = DB::select('SELECT * FROM `donations` ORDER BY `id` ASC');
+        return view('donations', array('donations' => $donations, 'donationsToplam' => $donationsToplam));
+    }
+
+    public function getDonationDetails(){
+        $id = request('donation_id');
+        $donations = DB::select("SELECT * FROM `donations` WHERE `donation_uniq_id` = '$id'");
+
+        $name = $donations[0]->name;
+        $explode_name = explode(" ", $name);
+        $cryptic_name = "";
+        foreach($explode_name as $e){
+            $lenght = strlen($e);
+            $replace = substr_replace($e, '*****' , 1, $lenght);
+            $cryptic_name = $cryptic_name . ' ' . $replace;
+        }
+
+        $donation_control = DB::select("SELECT * FROM `donation_and_demand_control` WHERE `donation_id` = '$id'");
+        $donation_match = DB::select("SELECT * FROM `donation_and_demand_match` WHERE `donation_id` = '$id'");
+
+        return view('donation_details', array('donations' => $donations, 'cryptic_name' => $cryptic_name, 'donation_control' => $donation_control, 'donation_match' => $donation_match));
+    }
+
 }

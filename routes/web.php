@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemandsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationsController;
 use App\Http\Controllers\FormController;
@@ -30,13 +31,17 @@ Route::get('/demand_form', [FormController::class, 'demandType']);
 
 Route::post('/demand_form', [FormController::class, 'addDemand'])->name('addDemand');
 
+Route::get('/donations', [DonationsController::class, 'getDonations']);
 
+Route::get('/demands', [DemandsController::class, 'getDemands']);
 
+Route::get('/demand_details', [DemandsController::class, 'getDemandDetails']);
+
+Route::get('/donation_details', [DonationsController::class, 'getDonationDetails']);
 
 Route::get('/slider', function () {
     return view('slider');
 });
-
 
 Route::get('/admin', function(){
     return view('admin');
@@ -46,30 +51,10 @@ Route::get('/control', function(){
     return view('control');
 });
 
-Route::get('/donations', function(){
-    return view('donations');
-});
-
-Route::get('/demands', function(){
-    return view('demands');
-});
 
 Route::get('/gallery', function(){
     return view('gallery');
 });
-
-Route::get('/demand_details', function(){
-    return view('demand_details');
-});
-
-Route::get('/donation_details', function(){
-    return view('donation_details');
-});
-
-Route::get('/demand_form', function(){
-    return view('demand_form');
-});
-
 
 Route::get('/last_donation', function(){
     return view('last_donation');

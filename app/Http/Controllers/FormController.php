@@ -59,7 +59,7 @@ class FormController extends Controller
                         $demand_id = $query_demand->demand_uniq_id;
                         $img_src = $token . '_' . $demand_id . ".jpg";
                         
-                        $addControl = DB::insert("INSERT INTO `donation_and_demand_control` (`donation_di`, `demand_id`, `img_src`) VALUES ('$token', '$demand_id', '$img_src')");
+                        $addControl = DB::insert("INSERT INTO `donation_and_demand_control` (`donation_id`, `demand_id`, `img_src`) VALUES ('$token', '$demand_id', '$img_src')");
                         
                         if($addControl) $getDonationById->qty_control = $getDonationById->qty_control - 1;
                         $updateQtyControl = DB::update("UPDATE `donations` SET `qty_control` =" . $getDonationById->qty_control . " WHERE donation_uniq_id = '$token'");
@@ -110,7 +110,7 @@ class FormController extends Controller
             $donation_id = $donations[0]->donation_uniq_id;
             $img_src = $donation_id . "_" . $token . ".jpg";
 
-            $sql_control = DB::insert("INSERT INTO `donation_and_demand_control` (`donation_di`, `demand_id`, `img_src`) VALUES ('$donation_id', '$token', '$img_src')");
+            $sql_control = DB::insert("INSERT INTO `donation_and_demand_control` (`donation_id`, `demand_id`, `img_src`) VALUES ('$donation_id', '$token', '$img_src')");
 
             if($sql_control) $donations[0]->qty_control = $donations[0]->qty_control - 1;
 

@@ -73,7 +73,7 @@
                     <input type="number" class="form-control" name="skta" id="skta" placeholder="05">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="cvv">Mail Adresi</label>
+                    <label for="cvv">CVV</label>
                     <input type="number" class="form-control" name="cvv" id="cvv" placeholder="CVV">
                 </div>
             </div>
@@ -103,7 +103,6 @@
             document.getElementById("typeText").innerHTML = "Bağışlarınızı Tayfun Taşdemir Adına NEÜ Seydişehir Ahmet Cengiz Mühendislik Fakültesine Getirebilirsiniz. Eğer Bağışı Getirme İmkanınız Yoksa Bizimle İletişime Geçiniz.(Sayfanın En Üst Kısmında Telefon Numarası Mevcuttur.)";
 
         }
-        
         else if(value == 0){
             document.getElementById("typeText").innerHTML = "";
             const typeDiv1 = document.getElementById("typeDiv1");

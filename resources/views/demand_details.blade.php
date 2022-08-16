@@ -1,35 +1,3 @@
-<?php 
-/* include 'header.php';
-include 'db.php';
-
-$demand_id = $_GET['demand_id'];
-
-$query_demand = $db->prepare("SELECT * FROM `demands` WHERE `demand_uniq_id` = $demand_id");
-$query_demand->execute();
-$demand = $query_demand->fetch(PDO::FETCH_ASSOC);
-
-
-$name = $demand['name'];
-$explode_name = explode(" ", $name); */
-/* 
-foreach($explode_name as $e){
-	$lenght = strlen($e);
-	$replace = substr_replace($e, '*****' , 1, $lenght);
-	echo $replace . ' ';
-} */
-
-
-/* $query_control = $db->prepare("SELECT * FROM `donation_and_demand_control` WHERE `demand_id` = $demand_id");
-$query_control->execute();
-$demand_control = $query_control->fetchAll(PDO::FETCH_ASSOC);
-
-$query_match = $db->prepare("SELECT * FROM `donation_and_demeand_match` WHERE `demand_id` = $demand_id");
-$query_match->execute();
-$demand_match = $query_match->fetchAll(PDO::FETCH_ASSOC);
- */
-
-?>
-
 @include('header')
 
 <section class="mt-10">
@@ -37,7 +5,7 @@ $demand_match = $query_match->fetchAll(PDO::FETCH_ASSOC);
         <div class="row">
             
             <div class="container" style="margin-top: 2rem; margin-bottom: 3rem;">
-                <h1 class="display-4"><?php // echo $demand_id?></h1>
+                <h1 class="display-4">{{$demands[0]->demand_uniq_id}}</h1>
                 <p class="lead">Numaralı Talebin Detayları</p>
             </div>
         </div>
@@ -47,84 +15,41 @@ $demand_match = $query_match->fetchAll(PDO::FETCH_ASSOC);
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talep Edenin Adı Soyadı:
                     <span class="badge badge-primary badge-detail">
-                        
-                        <?php 
-                            //foreach($explode_name as $e){
-                              //  $lenght = strlen($e);
-                               // $replace = substr_replace($e, '*****' , 1, $lenght);
-                               // echo $replace . ' ';
-                            //}
-                        ?>
-                    
+                        {{$cryptic_name}}
                     </span>
                 </li>
-                <?php
-                    //$counter = 0;
-                   // foreach($demand_control as $d_c){
-                     //   $count_d_c = count($d_c);
-                ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Eşleşen Bağış Numarası
                     <span class="badge badge-primary badge-detail">
-                        <?php 
-                          //  echo $d_c['donation_id'];
-                           // $counter++;
-                        ?>
+                        @if($demand_control != null) {{$demand_control[0]->donation_id}}@endif
                     </span>
                 </li>
-                <?php //}?>
-                <?php
-                    //$counter = 0;
-                    //foreach($demand_control as $d_c){
-                        //$count_d_c = count($d_c);
-                ?>
+
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Eşleşme Tarihi
                     <span class="badge badge-primary badge-detail">
-                        <?php 
-                            //echo $d_c['date_control'];
-                            //$counter++;
-                        ?>
+                        @if($demand_control != null) {{$demand_control[0]->created_at}}@endif
                     </span>
-                </li>
-                <?php //}?>     
-
-                <?php
-                    //$counter = 0;
-                    //foreach($demand_match  as $d_m){
-                       // $count_d_m = count($d_m);
-                ?>
+                </li>   
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Gerçekleştirilme Tarihi
                     <span class="badge badge-primary badge-detail">
-                        <?php 
-                            //echo $d_m['date_matching'];
-                            //$counter++;
-                        ?>
+                        @if($demand_match != null) {{$demand_match[0]->created_at}}@endif
                     </span>
                 </li>
-                <?php //}?> 
-
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Durumu:
-                    <?php   //if($demand['status'] == 0) echo '<span style="width:100px" class="text-center badge badge-fail badge-pill">Beklemede</span>'; 
-                            //elseif($demand['status'] == 1) echo '<span style="width:100px" class="text-center badge-current badge-pill">Sıraya Alındı</span>'; 
-                            //elseif($demand['status'] == 2) echo '<span style="width:100px" class="text-center badge-complete badge-pill">Tamamlandı</span>';?>
+                        @if($demands[0]->status == 0) <span style="width:20%" class="text-center badge badge-fail badge-pill">Beklemede</span>
+                        @elseif($demands[0]->status == 1) <span style="width:20%" class="text-center badge-current badge-pill">Sıraya Alındı</span>
+                        @elseif($demands[0]->status == 2) <span style="width:20%" class="text-center badge-complete badge-pill">Tamamlandı</span>
+                        @endif
                 </li>
-
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Verildiği Tarih:
-                    <span class="badge badge-primary badge-detail"><?php //echo $demand['date_added']?></span>
+                    <span class="badge badge-primary badge-detail">{{$demands[0]->created_at}}</span>
                 </li>
             </ul>
-        </div>
-
-        
+        </div>        
     </div>
 </section>
 @include('footer')
-
-
-<?php 
-/* include 'footer.html'; */
-?>

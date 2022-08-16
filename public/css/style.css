@@ -5416,9 +5416,9 @@ img{
 	margin-bottom:40px;
 }
 
-.sidebar-page-container .sidebar-side .sidebar{
+/* .sidebar-page-container .sidebar-side .sidebar{
 	
-}
+} */
 
 /* Services Detail */
 
@@ -9667,4 +9667,8 @@ white-space: nowrap;
         margin: 0 0 10px;
     }
     .panel .panel-heading .btn_group{ text-align: center; }
+}
+.info-ico{
+	font-size: 22px;
+	font-weight: bold;
 }
