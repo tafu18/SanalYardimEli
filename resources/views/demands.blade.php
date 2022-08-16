@@ -38,7 +38,7 @@
                                 <tbody>
                                     @foreach($demands as $demand)
                                         <tr>
-                                            <td>{{$demand->id}}</td>
+                                        <td>@if($counter <= $demandsToplam[0]->Counter) {{$counter++}}@endif</td>
                                             <td>{{$demand->demand_uniq_id}}</td>
                                             <td>{{$demand->demand}}</td>
 

@@ -30,8 +30,9 @@ class DonationsController extends Controller
 
     public function getDonations(){
         $donationsToplam = DB::select("SELECT count(*) AS Counter FROM `donations`");
-        $donations = DB::select('SELECT * FROM `donations` ORDER BY `id` ASC');
-        return view('donations', array('donations' => $donations, 'donationsToplam' => $donationsToplam));
+        $donations = DB::select('SELECT * FROM `donations` ORDER BY `id` DESC');
+        $counter = 1;
+        return view('donations', array('donations' => $donations, 'donationsToplam' => $donationsToplam, 'counter' => $counter));
     }
 
     public function getDonationDetails(){

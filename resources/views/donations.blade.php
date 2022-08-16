@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="panel-body table-responsive">
+                        <div class="panel-body table-responsive" id="tab">
                             <table class="table text-center" id="myTable">
                                 <thead>
                                     <tr>
@@ -38,7 +38,8 @@
                                 <tbody>
                                     @foreach($donations as $donation)
                                         <tr>
-                                            <td>{{$donation->id}}</td>
+                                            <!-- <td>{{$donation->id}}</td> -->
+                                            <td>@if($counter <= $donationsToplam[0]->Counter) {{$counter++}}@endif</td>
                                             <td>{{$donation->donation_uniq_id}}</td>
                                             <td>{{$donation->donation}}</td>
 

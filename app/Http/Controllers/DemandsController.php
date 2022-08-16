@@ -9,8 +9,9 @@ class DemandsController extends Controller
 {
     public function getDemands(){
         $demandsToplam = DB::select("SELECT count(*) AS Counter FROM `demands`");
-        $demands = DB::select('SELECT * FROM `demands` ORDER BY `id` ASC');
-        return view('demands', array('demands' => $demands, 'demandsToplam' => $demandsToplam));
+        $demands = DB::select('SELECT * FROM `demands` ORDER BY `id` DESC');
+        $counter = 1;
+        return view('demands', array('demands' => $demands, 'demandsToplam' => $demandsToplam, 'counter' => $counter));
     }
 
     public function getDemandDetails(){
