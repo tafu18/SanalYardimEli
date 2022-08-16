@@ -18,7 +18,7 @@
                                         <input type="text" class="form-control" id="myInput" onkeyup="filter()" placeholder="Bağış Numarası">
                                         <button class="btn btn-default" onclick="reloadPage()" title="Reload"><i class="fa fa-sync-alt"></i></button>
                                         <button class="btn btn-default" onclick="createPDF()" title="Pdf"><i class="fa fa-file-pdf"></i></button>
-                                        <button class="btn btn-default"  title="Excel"><i class="fas fa-file-excel"></i></button>
+                                        <button class="btn btn-default" disabled title="Excel"><i class="fas fa-file-excel"></i></button>
                                     </div>
                                 </div>
                             </div>
