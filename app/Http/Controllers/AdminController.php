@@ -14,15 +14,24 @@ class AdminController extends Controller
         $password = request('password');
         $admin = DB::select("SELECT * FROM admin_control WHERE student_no = '$student_no'");
         
-        if($password == $admin[0]->password){
-            $message = $admin[0]->name ." Giriş Başarılı...";
-            $url = "admin";
-		}
-		else{
-            $message = "Şifre Hatalı. Lütfen Tekrar Deneyiniz...";
-            $url = "login";
-		}
-        return redirect()->to($url)->with('message', $message);
+        if($admin != null){
+        
+            if($password == $admin[0]->password){
+                $message = $admin[0]->name ." Giriş Başarılı...";
+                $url = "admin";
+                return redirect()->to($url)->with('message', $message);
+            }
+        
+            else{
+                $message = "Şifre Hatalı. Lütfen Tekrar Deneyiniz...";
+                $deneme = "Denmee";
+                return back()->withInput()->with('message', $message);
+            }
+
+        }else{
+            $message = "Kullanıcı Bulunamadı. Lütfen Tekrar Deneyiniz...";
+            return back()->withInput()->with('message', $message);
+        }
     }
 
 

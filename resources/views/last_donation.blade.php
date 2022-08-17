@@ -1,40 +1,3 @@
-<?php 
-/* ob_start();
-session_start();
-if($_SESSION['name'] == null) header("Location:login.php");
-require_once 'header.php';  require_once 'db.php';
-
-$query_donations = $db->prepare("SELECT * FROM `donations` WHERE `status` = 2 ORDER BY id DESC");
-$query_donations->execute();
-$donations = $query_donations->fetchAll(PDO::FETCH_ASSOC);
-
-$query_demands = $db->prepare("SELECT * FROM `demands` WHERE `status` = 2 ORDER BY id DESC");
-$query_demands->execute();
-$demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
-
- */
-
-
-?>
-
-<?php 
-/* ob_start();
-session_start();
-if($_SESSION['name'] == null) header("Location:login.php");
-require_once 'header.php';  require_once 'db.php';
-
-$query_donations = $db->prepare("SELECT * FROM `donations` WHERE `status` != 2  ORDER BY id DESC");
-$query_donations->execute();
-$donations = $query_donations->fetchAll(PDO::FETCH_ASSOC);
-
-$query_demands = $db->prepare("SELECT * FROM `demands` WHERE `status` != 2 ORDER BY id DESC");
-$query_demands->execute();
-$demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
-
-
-
- */
-?>
 @include('header')
 <section class="rotate"></section>
 <section class="rotate-reverse"></section>
@@ -51,7 +14,7 @@ $demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
                 </button>
             </div>
         @endif
-        <h2 class="text-center color-text mb-5"><b>Genel Bilgi Düzenleme Tabloları</b></h2>
+        <h2 class="text-center color-text mb-5"><b>Tamamlanmış Bağışlar ve Talepler</b></h2>
         <div class="container">
             <div class="row justify-content-center-2">
                 <div class="col-md-offset-1 col-md-10">
@@ -74,6 +37,9 @@ $demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
                         <div class="panel-body table-responsive" id="tab">
                             <table class="table text-center" id="myTable">
                                 <thead>
+                                    <tr>
+                                        <th class="text-center" colspan="6" scope="col">Bağışlar Tablosu</th>
+                                    </tr>
                                     <tr>
                                         <th >#</th>
                                         <th >Bağış Numarası</th>
@@ -134,7 +100,6 @@ $demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
 
 <section class="mt-15 mb-5">
     <div class="container">
-        <h2 class="text-center color-text mb-5"><b>Genel Bilgi Düzenleme Tabloları</b></h2>
         <div class="container">
             <div class="row justify-content-center-2">
                 <div class="col-md-offset-1 col-md-10">
@@ -157,6 +122,9 @@ $demands = $query_demands->fetchAll(PDO::FETCH_ASSOC);
                         <div class="panel-body table-responsive" id="tab2">
                             <table class="table text-center" id="myTable2">
                                 <thead>
+                                <tr>
+                                    <th class="text-center" colspan="6" scope="col">Talepler Tablosu</th>
+                                </tr>
                                     <tr>
                                         <th>#</th>
                                         <th>Talep Numarası</th>

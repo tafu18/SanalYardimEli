@@ -37,7 +37,7 @@
 							</div>
 						</div>
 						</div>
-						<button class="btn btn-primary col-8" type="submit">Giriş Yap</button>
+						<button class="btn btn-special col-8" type="submit">Giriş Yap</button>
 					</form>
 				</div>  
 			</div>
