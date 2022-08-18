@@ -59,19 +59,55 @@ class AdminController extends Controller
         return view('last_donation', array('donations' => $donations, 'donationsToplam' => $donationsToplam, 'counterDonation' => $counterDonation, 'demands' => $demands, 'demandsToplam' => $demandsToplam, 'counterDemand' => $counterDemand));
     }
 
+    public function controlDonation(){
+        $queryControlCounter = DB::select("SELECT COUNT(*) as Counter FROM `donation_and_demand_control`"); //counter
+        $queryControl = DB::select("SELECT * FROM `donation_and_demand_control`"); //controls
+        $counterControl = 1;
+    
+
+        return view('control', array('controls' => $queryControl, 'counter' => $queryControlCounter, 'counterControl' => $counterControl));
+    }
+
+    public function controlDonationPost(){
+        $queryControlCounter = DB::select("SELECT COUNT(*) as Counter FROM `donation_and_demand_control`"); //counter
+        $counter = $queryControlCounter[0]->Counter;
+
+        for ($i = 1; $i <= $counter; $i++){
+            $input_id = "input" . $i;
+            if(request($input_id)){
+                $donation_id = request('donationid' . $i);
+                $demand_id = request('demandid' . $i);
+
+                //$deneme = DB::update("UPDATE `donations` SET `status` = 10 WHERE donation_uniq_id = '$donation_id'");
+                $donation_query = DB::select("SELECT * FROM `donations` WHERE `donation_uniq_id` = '$donation_id'");
+                $donation_type = $donation_query[0]->donation;
+                
+
+                $img_src = 'images/donations_img/' . $donation_id . '_' . $demand_id . '.jpg';
+                $sql = DB::insert("INSERT INTO `donation_and_demand_match`(`donation_id`, `demand_id`, `donation_name`, `img_src`) VALUES ('$donation_id', '$demand_id', '$donation_type', '$img_src')");
+                
+                if($sql){
+
+                    $sql_delete = DB::delete("DELETE FROM `donation_and_demand_control` WHERE `demand_id` = '$demand_id'");
+    
+                    $set_demand = DB::update("UPDATE `demands` SET `status` = 2 WHERE demand_uniq_id = '$demand_id'");
+    
+                    $matchCounter = DB::select("SELECT COUNT(*) as Counter FROM `donation_and_demand_match` WHERE `donation_id` = '$donation_id'"); //counter
+                    $counterMatch = $matchCounter[0]->Counter;
 
 
+                    if($donation_query[0]->qty == $counterMatch){
+                        $set_donation = DB::update("UPDATE `donations` SET `status` =  2 WHERE donation_uniq_id = '$donation_id'");
+                    }
+                    $result = "Bağış Başarı İle Gerçekleştirildi";
+                } 
+                else $result = "HATA!!! Bağış Başarısız!!!"; 
 
 
-
-
-
-
-
-
-
-
-
+                return back()->with('message', $result);
+            }
+        }
+    }
 
 
 }

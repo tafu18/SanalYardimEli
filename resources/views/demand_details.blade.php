@@ -18,25 +18,28 @@
                         {{$cryptic_name}}
                     </span>
                 </li>
+                @if($demand_control != null)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Eşleşen Bağış Numarası
                     <span class="badge badge-primary badge-detail">
-                        @if($demand_control != null) {{$demand_control[0]->donation_id}}@endif
+                         {{$demand_control[0]->donation_id}}
                     </span>
                 </li>
-
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Eşleşme Tarihi
                     <span class="badge badge-primary badge-detail">
-                        @if($demand_control != null) {{$demand_control[0]->created_at}}@endif
+                         {{$demand_control[0]->created_at}}
                     </span>
-                </li>   
+                </li>
+                @endif 
+                @if($demand_match != null) 
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Gerçekleştirilme Tarihi
                     <span class="badge badge-primary badge-detail">
-                        @if($demand_match != null) {{$demand_match[0]->created_at}}@endif
+                         {{$demand_match[0]->created_at}}
                     </span>
                 </li>
+                @endif
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Talebin Durumu:
                         @if($demands[0]->status == 0) <span style="width:20%" class="text-center badge badge-fail badge-pill">Beklemede</span>

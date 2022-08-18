@@ -48,13 +48,15 @@ Route::get('/admin', [AdminController::class, 'getAllData']);
 
 Route::get('/last_donation', [AdminController::class, 'getAllDataLastDonation']);
 
+Route::get('/control', [AdminController::class, 'controlDonation']);
+
+Route::post('/control', [AdminController::class, 'controlDonationPost'])->name('controlPost');
+
 Route::get('/slider', function () {
     return view('slider');
 });
 
-Route::get('/control', function(){
-    return view('control');
-});
+
 
 
 Route::get('/gallery', function(){

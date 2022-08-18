@@ -38,18 +38,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php //$counterControl = 1; foreach($controls as $control){?>
-                            
+                        @foreach($controls as $control)
                         <tr id="myUL" class="table-tr">
-                        <form action="" method="POST">
-                                <th style="color: black;" class="text-left" scope="row"><?php //echo $counterControl; ?> </th>
-                                <td style="color: black;" class="text-left"><input style="background-color: transparent; width: 80px;" type="text" name="<?php //echo 'donationid'. $counterControl ?>" value="<?php //echo $control['donation_id']?>" readonly></td>
-                                <td style="color: black;" class="text-left"><input style="background-color: transparent; width: 80px;" type="text" value="<?php //echo $control['demand_id']?>" name="<?php //echo 'demandid'. $counterControl ?>" readonly></td>
-                                <td class="text-left"><button type="submit" name="<?php //echo 'button'. $counterControl ?>" class="btn btn-special" style="margin-bottom: 0px!important;">Onayla</button></td>
+                        <form action="{{ route('controlPost') }}" method="POST">
+                            @csrf
+                                <th style="color: black;" class="text-left" scope="row">{{$counterControl}}</th>
+                                <td style="color: black;" class="text-left"><input style="background-color: transparent; width: 80px;" type="text" name="donationid{{$counterControl}}" value="{{$control->donation_id}}" readonly></td>
+                                <td style="color: black;" class="text-left"><input style="background-color: transparent; width: 80px;" type="text" name="demandid{{$counterControl}}" value="{{$control->demand_id}}"  readonly></td>
+                                <input type="hidden" name="input{{$counterControl}}" value="input{{$counterControl}}" class="btn btn-special" style="margin-bottom: 0px!important;">
+                                <td class="text-left"><button type="submit" name="button{{$counterControl}}"  class="btn btn-special" style="margin-bottom: 0px!important;">Onayla</button></td>
                                 </form>
                         </tr>
-                        
-                        <?php //$counterControl++; } ?>
+                            @if($counterControl <= $counter[0]->Counter) {{$counterControl++}}@endif
+                        @endforeach
                     </tbody>
                 </table>
                 
@@ -108,31 +109,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
  */
 ?>
-<script>
-/*     
+<script> 
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }//Tarayıcının input geçmişini siler.
+    function filter() {
+        
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
-function filter() {
-
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
     }
-  }
-} */
 </script>
-<?php //include 'footer.html';?>

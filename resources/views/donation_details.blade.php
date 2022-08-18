@@ -23,7 +23,7 @@
                     Bağış Miktarı:
                     <span class="badge badge-primary badge-detail">{{$donations[0]->qty}}</span>
                 </li>
-                    @foreach($donation_control as $d_c)
+            @foreach($donation_control as $d_c)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Eşleşen Talep Numarası
                     <span class="badge badge-primary badge-detail">
@@ -36,16 +36,16 @@
                         {{$d_c->created_at}}
                     </span>
                 </li>
-                    @endforeach
+            @endforeach
 
-                    @foreach($donation_match  as $d_m)
+            @foreach($donation_match  as $d_m)
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                 <span class="badge badge-primary badge-detail">{{$d_m->demand_id}} ile Gerçekleştrilen Bağış Tarihi</span> 
                     <span class="badge badge-primary badge-detail">
                         {{$d_m->created_at}}
                     </span>
                 </li>
-                    @endforeach
+            @endforeach
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Bağışın Durumu:
                         @if($donations[0]->status == 0) <span style="width:20%" class="text-center badge badge-fail badge-pill">Beklemede</span>
