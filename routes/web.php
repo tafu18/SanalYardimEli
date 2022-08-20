@@ -7,7 +7,6 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +17,7 @@ use App\Http\Controllers\GalleryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', [DonationsController::class, 'sumDonations'])->name('main');
 
 Route::get('/donation_form', [FormController::class, 'donationType']);

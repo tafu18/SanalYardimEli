@@ -21,17 +21,19 @@ class AdminController extends Controller
             if($password == $admin[0]->password){
                 $message = $admin[0]->name ." Giriş Başarılı...";
                 $url = "admin";
+                $flag = true;
                 return redirect()->to($url)->with('message', $message);
             }
         
             else{
                 $message = "Şifre Hatalı. Lütfen Tekrar Deneyiniz...";
-                $deneme = "Denmee";
+                $flag = false;
                 return back()->withInput()->with('message', $message);
             }
 
         }else{
             $message = "Kullanıcı Bulunamadı. Lütfen Tekrar Deneyiniz...";
+            $flag = false;
             return back()->withInput()->with('message', $message);
         }
         /* dd($request->post()); */
