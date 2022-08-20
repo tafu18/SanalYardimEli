@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 
 
 class AdminController extends Controller
@@ -12,7 +14,7 @@ class AdminController extends Controller
         
         $student_no = request('student_no');
         $password = request('password');
-        $admin = DB::select("SELECT * FROM admin_control WHERE student_no = '$student_no'");
+/*         $admin = DB::select("SELECT * FROM admin_control WHERE student_no = '$student_no'");
         
         if($admin != null){
         
@@ -31,6 +33,10 @@ class AdminController extends Controller
         }else{
             $message = "Kullanıcı Bulunamadı. Lütfen Tekrar Deneyiniz...";
             return back()->withInput()->with('message', $message);
+        } */
+        /* dd($request->post()); */
+        if(Auth::attempt(['student_no' => $student_no, 'password' => $password])){
+
         }
     }
 
@@ -54,6 +60,7 @@ class AdminController extends Controller
 
         $demandsToplam = DB::select("SELECT count(*) AS Counter FROM `demands` WHERE `status` = 2");
         $demands = DB::select('SELECT * FROM `demands` WHERE `status` = 2 ORDER BY id DESC');
+        //$demands = DB::table('demands')->where('status', '=', 2)->paginate(5);
         $counterDemand = 1;
 
         return view('last_donation', array('donations' => $donations, 'donationsToplam' => $donationsToplam, 'counterDonation' => $counterDonation, 'demands' => $demands, 'demandsToplam' => $demandsToplam, 'counterDemand' => $counterDemand));

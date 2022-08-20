@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonationsController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GalleryController;
 
 
 /*
@@ -17,11 +18,6 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-/* Route::get('/', function () {
-    return view('index');
-});
- */
 Route::get('/', [DonationsController::class, 'sumDonations'])->name('main');
 
 Route::get('/donation_form', [FormController::class, 'donationType']);
@@ -52,18 +48,11 @@ Route::get('/control', [AdminController::class, 'controlDonation']);
 
 Route::post('/control', [AdminController::class, 'controlDonationPost'])->name('controlPost');
 
+Route::get('/gallery', [GalleryController::class, 'getMatchData']);
+
 Route::get('/slider', function () {
     return view('slider');
 });
-
-
-
-
-Route::get('/gallery', function(){
-    return view('gallery');
-});
-
-
 
 Route::get('/welcome', function(){
     return view('welcome');
