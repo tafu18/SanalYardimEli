@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('admin_control', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->bigint('student_no');
             $table->string('name',50);
@@ -24,11 +24,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *ww
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('admin_control');
+        Schema::dropIfExists('admins');
     }
 };

@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function adminLogin(){
+    public function adminLogin(Request $request){
         
         $student_no = request('student_no');
         $password = request('password');
-/*         $admin = DB::select("SELECT * FROM admin_control WHERE student_no = '$student_no'");
+        $admin = DB::select("SELECT * FROM admins WHERE student_no = '$student_no'");
         
         if($admin != null){
         
@@ -33,11 +33,8 @@ class AdminController extends Controller
         }else{
             $message = "Kullanıcı Bulunamadı. Lütfen Tekrar Deneyiniz...";
             return back()->withInput()->with('message', $message);
-        } */
-        /* dd($request->post()); */
-        if(Auth::attempt(['student_no' => $student_no, 'password' => $password])){
-
         }
+        /* dd($request->post()); */
     }
 
 
