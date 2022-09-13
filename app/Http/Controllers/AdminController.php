@@ -21,7 +21,8 @@ class AdminController extends Controller
             if($password == $admin[0]->password){
                 $message = $admin[0]->name ." Giriş Başarılı...";
                 $url = "admin";
-                $flag = true;
+                session_start();
+                $_SESSION['flag'] = true; 
                 return redirect()->to($url)->with('message', $message);
             }
         
